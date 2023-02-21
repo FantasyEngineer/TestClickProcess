@@ -9,10 +9,27 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        var findViewById = findViewById<TextView>(R.id.tv)
-        findViewById.setOnClickListener {
-            "点击我了".log()
+        var ll = findViewById<ALinearlayout>(R.id.ll)
+        ll.setOnClickListener {
+            "点击我了ll".log()
         }
+        var findViewById = findViewById<AButton>(R.id.tv)
+//        findViewById.setOnClickListener {
+//            "点击我了".log()
+//        }
+    }
+
+    /**
+     * 只要按下就会触发该方法，事件会依然向下传递
+     */
+    override fun onUserInteraction() {
+        "onUserInteraction".log()
+        super.onUserInteraction()
+    }
+
+    override fun onUserLeaveHint() {
+        "onUserLeaveHint".log()
+        super.onUserLeaveHint()
     }
 
     override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
